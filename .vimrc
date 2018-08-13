@@ -20,13 +20,19 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Syntax plugins
 Plugin 'mxw/vim-jsx'
 Plugin 'pangloss/vim-javascript'
+" Plugin 'chemzqm/vim-jsx-improve'
 
 " Eslint plugin
 Plugin 'w0rp/ale'
-let g:ale_fixers = {
-\   'javascript': ['eslint'],
-\}
-let g:ale_fix_on_save = 1
+
+" Tag Match display
+Plugin 'Valloric/MatchTagAlways'
+
+" Color preview
+Plugin 'ap/vim-css-color'
+
+" Multicursor
+Plugin 'terryma/vim-multiple-cursors'
 
 "---EndPlugins----------------------------------------------------------------
 " All of your Plugins must be added before the following line
@@ -37,9 +43,12 @@ filetype plugin indent on    " required
 
 "===NormalConfig=============================================================
 " Scheme
-colorscheme onehalfdark
+set background=dark
+colorscheme tender
+" colorscheme molokai
+" colorscheme solarized
+" colorscheme onehalfdark
 " colorscheme hybrid_material
-" colorscheme tender
 " colorscheme stellarized
 
 " Indent
@@ -55,6 +64,16 @@ syntax on
 " Line number
 set number
 
+" Remap panes navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" Pane Split direction
+set splitbelow
+set splitright
+
 " Search
 set incsearch
 set hlsearch
@@ -62,3 +81,13 @@ set hlsearch
 " Set 256 colors
 let &t_Co=256
 
+" React setup for plugins
+let g:ale_fixers = {
+\   'javascript': ['eslint'],
+\}
+let g:ale_fix_on_save = 1
+
+" Allow MatchTagAlways to highlight jxs
+let g:mta_filetypes = {
+			\ 'javascript.jxs' : 1,
+			\}
