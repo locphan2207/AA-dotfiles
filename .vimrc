@@ -37,6 +37,10 @@ Plugin 'ap/vim-css-color'
 " Multicursor
 Plugin 'terryma/vim-multiple-cursors'
 
+" Fuzzy finder and find all
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } 
+Plugin 'junegunn/fzf.vim'
+
 "---EndPlugins----------------------------------------------------------------
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -54,11 +58,12 @@ colorscheme tender
 " colorscheme hybrid_material
 " colorscheme stellarized
 
-" Indent
+" Indent, convert tab to spaces
+set expandtab
 set tabstop=2
 set shiftwidth=2
 
-" Change ESC to jk
+" Change ESC to jj
 inoremap jj <ESC>
 
 " Syntax
@@ -80,6 +85,9 @@ set splitright
 " Search
 set incsearch
 set hlsearch
+
+" Status line
+set statusline+=%F
 
 " Set 256 colors
 let &t_Co=256
