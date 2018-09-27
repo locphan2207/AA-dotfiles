@@ -17,6 +17,9 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 
 "---Plugins-------------------------------------------------------------------
+"Nerdtree
+Plugin 'scrooloose/nerdtree'
+
 " Syntax plugins
 Plugin 'mxw/vim-jsx'
 Plugin 'pangloss/vim-javascript'
@@ -91,3 +94,9 @@ let g:ale_fix_on_save = 1
 let g:mta_filetypes = {
 			\ 'javascript.jxs' : 1,
 			\}
+
+" Nerdtree config:
+" always open on vim start
+" autocmd vimenter * NERDTree
+" toggle tree
+map <C-\> :NERDTreeToggle<CR>
