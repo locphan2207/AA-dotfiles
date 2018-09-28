@@ -38,7 +38,7 @@ Plugin 'ap/vim-css-color'
 Plugin 'terryma/vim-multiple-cursors'
 
 " Fuzzy finder and find all
-Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } 
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 
 "---EndPlugins----------------------------------------------------------------
@@ -58,8 +58,8 @@ colorscheme tender
 " colorscheme hybrid_material
 " colorscheme stellarized
 
-" Indent, convert tab to spaces
-set expandtab
+" Indent"
+" set expandtab " convert tab to spaces
 set tabstop=2
 set shiftwidth=2
 
@@ -86,8 +86,27 @@ set splitright
 set incsearch
 set hlsearch
 
-" Status line
-set statusline+=%F
+" Title on top
+set title
+
+"---Status line config---------------------------------------------------------
+function! GitInfo()
+  let git = fugitive#head()
+  if git != ''
+    return ' '.fugitive#head()
+  else
+    return ''
+endfunction
+
+set laststatus=2 											" Always visible at bottom
+
+set statusline=
+set statusline+=\ %f 						" Relative path
+set statusline+=%= 						" Right side:
+set statusline+=\ %{GitInfo()}
+
+"---end status line config---------------------------------------------------------
+
 
 " Set 256 colors
 let &t_Co=256
