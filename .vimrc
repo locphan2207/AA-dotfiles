@@ -131,6 +131,8 @@ let g:airline_theme='deus'
 let g:airline_section_x=''
 let g:airline_section_y=''
 
+let g:airline#extensions#tabline#enabled = 1	" enable buffer line
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 "---Nerdtree config-------------------------------------------------------
 " always open on vim start
 " autocmd vimenter * NERDTree
