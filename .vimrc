@@ -17,13 +17,13 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 
 "---Plugins-------------------------------------------------------------------
-"Nerdtree
+" Nerdtree
 Plugin 'scrooloose/nerdtree'
 
 " Syntax plugins
 Plugin 'mxw/vim-jsx'
 Plugin 'pangloss/vim-javascript'
-" Plugin 'chemzqm/vim-jsx-improve'
+Plugin 'chemzqm/vim-jsx-improve'
 
 " Eslint plugin
 Plugin 'w0rp/ale'
@@ -40,6 +40,10 @@ Plugin 'terryma/vim-multiple-cursors'
 " Fuzzy finder and find all
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
+
+" Status line
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-airline/vim-airline'
 
 "---EndPlugins----------------------------------------------------------------
 " All of your Plugins must be added before the following line
@@ -90,21 +94,20 @@ set hlsearch
 set title
 
 "---Status line config---------------------------------------------------------
-function! GitInfo()
-  let git = fugitive#head()
-  if git != ''
-    return ' '.fugitive#head()
-  else
-    return ''
-endfunction
-
-set laststatus=2 											" Always visible at bottom
-
-set statusline=
-set statusline+=\ %f 						" Relative path
-set statusline+=%= 						" Right side:
-set statusline+=\ %{GitInfo()}
-
+" function! GitInfo()
+"   let git = fugitive#head()
+"   if git != ''
+"     return ' '.fugitive#head()
+"   else
+"     return ''
+" endfunction
+" 
+" set laststatus=2 											" Always visible at bottom
+" 
+" set statusline=
+" set statusline+=\ %f 						" Relative path
+" set statusline+=%= 						" Right side:
+" set statusline+=\ %{GitInfo()}
 "---end status line config---------------------------------------------------------
 
 
@@ -122,7 +125,13 @@ let g:mta_filetypes = {
 			\ 'javascript.jxs' : 1,
 			\}
 
-" Nerdtree config:
+"---Airline config---------------------------------------------------------
+let g:airline_powerline_fonts = 1
+let g:airline_theme='deus'
+let g:airline_section_x=''
+let g:airline_section_y=''
+
+"---Nerdtree config-------------------------------------------------------
 " always open on vim start
 " autocmd vimenter * NERDTree
 " toggle tree
