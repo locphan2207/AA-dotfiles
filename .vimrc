@@ -34,6 +34,15 @@ Plugin 'Valloric/MatchTagAlways'
 " Color preview
 Plugin 'ap/vim-css-color'
 
+" Surround helpers
+Plugin 'tpope/vim-surround'
+
+" Comment helpers
+Plugin 'tpope/vim-commentary'
+
+" Support dot repeat for some plugins
+Plugin 'tpope/vim-repeat'
+
 " Multicursor
 Plugin 'terryma/vim-multiple-cursors'
 
@@ -70,17 +79,15 @@ set shiftwidth=2
 " Change ESC to jj
 inoremap jj <ESC>
 
+" Buffer switch
+nnoremap <Tab> :bnext<CR>
+nnoremap <S-Tab> :bprevious<CR>
+
 " Syntax
 syntax on
 
 " Line number
 set number
-
-" Remap panes navigation
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
 
 " Pane Split direction
 set splitbelow
@@ -90,34 +97,11 @@ set splitright
 set incsearch
 set hlsearch
 
-" Title on top
-set title
-
-"---Status line config---------------------------------------------------------
-" function! GitInfo()
-"   let git = fugitive#head()
-"   if git != ''
-"     return ' '.fugitive#head()
-"   else
-"     return ''
-" endfunction
-" 
-" set laststatus=2 											" Always visible at bottom
-" 
-" set statusline=
-" set statusline+=\ %f 						" Relative path
-" set statusline+=%= 						" Right side:
-" set statusline+=\ %{GitInfo()}
-"---end status line config---------------------------------------------------------
-
-
 " Set 256 colors
 let &t_Co=256
 
-" React setup for plugins
-let g:ale_fixers = {
-\   'javascript': ['eslint'],
-\}
+"---Ale config for react---------------------------------------------------
+let g:ale_fixers = {'javascript': ['eslint'], 'python': ['black', 'isort']}
 let g:ale_fix_on_save = 1
 
 " Allow MatchTagAlways to highlight jxs
@@ -132,9 +116,10 @@ let g:airline_section_x=''
 let g:airline_section_y=''
 
 let g:airline#extensions#tabline#enabled = 1	" enable buffer line
-let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#tabline#formatter = 'unique_tail'	" style for buffer tab name
+let g:airline#extensions#ale#enabled = 1	" enable ale error
 "---Nerdtree config-------------------------------------------------------
 " always open on vim start
 " autocmd vimenter * NERDTree
-" toggle tree
-map <C-\> :NERDTreeToggle<CR>
+" toggle tree and open current file dir
+map <C-\> :NERDTreeToggle %<CR>
