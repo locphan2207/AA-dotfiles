@@ -104,3 +104,8 @@ alias cdsbk="cd ~/Documents/smarkets/frontend/sbk/"
 
 # Fuzzy finder enable
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Powerlevel9k config
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(background_jobs disk_usage) 
+POWERLEVEL9K_DISK_USAGE_ONLY_WARNING=true
