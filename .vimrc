@@ -86,6 +86,11 @@ nnoremap <S-Tab> :bprevious<CR>
 " Syntax
 syntax on
 
+" Auto read/change from disk (when change from git also)
+set autoread
+set updatetime=1000 				" CursorHold time as 1s
+au CursorHold * checktime 	" check after inactivity time (CursorHold) in normal mode
+
 " Line number
 set number
 
