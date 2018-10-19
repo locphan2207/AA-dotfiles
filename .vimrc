@@ -54,6 +54,9 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-airline/vim-airline'
 
+" Colorscheme
+Plugin 'chriskempson/base16-vim'
+
 "---EndPlugins----------------------------------------------------------------
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -62,19 +65,19 @@ filetype plugin indent on    " required
 "filetype plugin on
 
 "===NormalConfig=============================================================
-" Scheme
-set background=dark
-colorscheme tender
-" colorscheme molokai
-" colorscheme solarized
-" colorscheme onehalfdark
-" colorscheme hybrid_material
-" colorscheme stellarized
+" Auto update vim colorscheme base on the terminal color(must both use base16)
+" Make sure to install base 16 shell for this by adding:
+" To change colorscheme: type base 16 colorscheme name in terminal.
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
 
 " Indent"
-" set expandtab " convert tab to spaces
+set expandtab 		" convert tab to spaces
 set tabstop=2
 set shiftwidth=2
+set autoindent		" autoindent when starting new line
 
 " Change ESC to jj
 inoremap jj <ESC>
@@ -103,7 +106,7 @@ set incsearch
 set hlsearch
 
 " Set 256 colors
-let &t_Co=256
+" let &t_Co=256
 
 "---Ale config for react---------------------------------------------------
 let g:ale_fixers = {'javascript': ['eslint'], 'python': ['black', 'isort']}
