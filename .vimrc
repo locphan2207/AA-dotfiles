@@ -109,7 +109,7 @@ set hlsearch
 " let &t_Co=256
 
 "---Ale config for react---------------------------------------------------
-let g:ale_fixers = {'javascript': ['eslint'], 'python': ['yapf']}
+let g:ale_fixers = {'javascript': ['eslint']} ", 'python': ['yapf']}
 let g:ale_fix_on_save = 1
 let g:ale_echo_msg_format = '[%linter%] %s'
 

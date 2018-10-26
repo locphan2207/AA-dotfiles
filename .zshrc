@@ -101,11 +101,18 @@ alias runios="bundle exec start-dev ios"
 alias runipx="react-native run-ios --simulator='iPhone X'"
 alias runip7="react-native run-ios --simulator='iPhone 7'"
 alias cdsbk="cd ~/Documents/smarkets/frontend/sbk/"
+alias cdsbkend="cd ~/Documents/smarkets/services/sbkend/"
 
 # Fuzzy finder enable
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Powerlevel9k config
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(virtualenv dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(background_jobs disk_usage) 
 POWERLEVEL9K_DISK_USAGE_ONLY_WARNING=true
+
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        eval "$("$BASE16_SHELL/profile_helper.sh")"
