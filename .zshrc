@@ -88,6 +88,13 @@ source $ZSH/oh-my-zsh.sh
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
+#
+# Android
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -97,11 +104,14 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias runpixel="bundle exec start-dev android Pixel_2_XL_API_28"
+alias runpixel="bundle exec start-dev android Nexus_4_API_28"
 alias runios="bundle exec start-dev ios"
 alias runipx="react-native run-ios --simulator='iPhone X'"
 alias runip7="react-native run-ios --simulator='iPhone 7'"
 alias cdsbk="cd ~/Documents/smarkets/frontend/sbk/"
 alias cdsbkend="cd ~/Documents/smarkets/services/sbkend/"
+alias runenv="source env/bin/activate"
 
 # Fuzzy finder enable
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
