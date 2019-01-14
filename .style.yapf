@@ -29,6 +29,11 @@ dedent_closing_brackets=True
 # etc.
 space_between_ending_comma_and_closing_bracket=False
 
+split_before_logical_operator=True
+split_before_dot=True
+SPLIT_ALL_COMMA_SEPARATED_VALUES=True
+SPLIT_BEFORE_DICT_SET_GENERATOR=False
+
 # Split after the opening paren which surrounds an expression if it doesn't
 # fit on a single line.
 split_before_expression_after_opening_paren=True
@@ -62,3 +67,4 @@ blank_line_before_nested_class_or_def=True
 # reformattting on that line, because the string it has cannot be moved
 # away from the i18n comment.
 i18n_function_call=['_']
+
