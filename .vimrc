@@ -24,11 +24,12 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'mxw/vim-jsx'
 Plugin 'pangloss/vim-javascript'
 Plugin 'chemzqm/vim-jsx-improve'
+Plugin 'leafgarland/typescript-vim'
 
 " Eslint plugin
 Plugin 'w0rp/ale'
 
-" Tag Match display
+" tag match display
 Plugin 'Valloric/MatchTagAlways'
 
 " Color preview
@@ -109,9 +110,17 @@ set hlsearch
 " let &t_Co=256
 
 "---Ale config for react---------------------------------------------------
-let g:ale_fixers = {'javascript': ['eslint'], 'python': ['yapf']}
+let g:ale_fixers = {
+      \'javascript': ['eslint', 'prettier'], 
+      \'typescript': ['eslint', 'prettier'],
+      \'python': ['yapf']
+      \}
+let g:ale_linters = {'javascript': ['eslint'], 'typescript': ['tsserver']}
 let g:ale_fix_on_save = 1
 let g:ale_echo_msg_format = '[%linter%] %s'
+
+"---TypeScript syntax config------------------------------------------------
+let g:typescript_indent_disable = 1   " Disable auto indent
 
 " Allow MatchTagAlways to highlight jxs
 let g:mta_filetypes = {
@@ -127,8 +136,13 @@ let g:airline_section_y=''
 let g:airline#extensions#tabline#enabled = 1	" enable buffer line
 let g:airline#extensions#tabline#formatter = 'unique_tail'	" style for buffer tab name
 let g:airline#extensions#ale#enabled = 1	" enable ale error
+
 "---Nerdtree config-------------------------------------------------------
 " always open on vim start
 " autocmd vimenter * NERDTree
 " toggle tree and open current file dir
 map <C-\> :NERDTreeToggle %<CR>
+
+"---Default fzf layout---------------------------------------------------
+" - down / up / left / right
+let g:fzf_layout = { 'down': '~40%' }
