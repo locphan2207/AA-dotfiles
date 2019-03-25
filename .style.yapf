@@ -2,7 +2,7 @@
 based_on_style=pep8
 
 # The column limit.
-column_limit=119
+column_limit=129
 
 # Align closing bracket with visual indentation.
 align_closing_bracket_with_visual_indent=False

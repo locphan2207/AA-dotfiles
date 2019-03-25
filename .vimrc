@@ -23,8 +23,11 @@ Plugin 'scrooloose/nerdtree'
 " Syntax plugins
 Plugin 'mxw/vim-jsx'
 Plugin 'pangloss/vim-javascript'
-Plugin 'chemzqm/vim-jsx-improve'
+Plugin 'peitalin/vim-jsx-typescript'
 Plugin 'leafgarland/typescript-vim'
+
+" Indent Line
+Plugin 'Yggdroot/indentLine'
 
 " Eslint plugin
 Plugin 'w0rp/ale'
@@ -112,12 +115,18 @@ set hlsearch
 "---Ale config for react---------------------------------------------------
 let g:ale_fixers = {
       \'javascript': ['eslint', 'prettier'], 
-      \'typescript': ['eslint', 'prettier'],
+      \'typescript': ['eslint','prettier'],
       \'python': ['yapf']
       \}
 let g:ale_linters = {'javascript': ['eslint'], 'typescript': ['tsserver']}
 let g:ale_fix_on_save = 1
+let g:ale_lint_on_enter = 1
 let g:ale_echo_msg_format = '[%linter%] %s'
+let g:ale_set_balloons = 1
+let g:ale_sign_column_always = 0
+
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 "---TypeScript syntax config------------------------------------------------
 let g:typescript_indent_disable = 1   " Disable auto indent
@@ -127,6 +136,22 @@ let g:mta_filetypes = {
 			\ 'javascript.jxs' : 1,
 			\}
 
+"---TSX config-------------------------------------------------------------
+" hi ReactState guifg=#C176A7
+" hi ReactProps guifg=#D19A66
+" hi Events ctermfg=204 guifg=#56B6C2
+" hi ReduxKeywords ctermfg=204 guifg=#C678DD
+" hi WebBrowser ctermfg=204 guifg=#56B6C2
+" hi ReactLifeCycleMethods ctermfg=204 guifg=#D19A66
+hi tsxTypeBraces guifg=#56B6C2
+" hi tsxtypes guifg=#e06c75
+hi tsxTagName guifg=#E06C75
+" hi tsxCloseString guifg=#F99575
+hi tsxCloseTag guifg=#F99575
+" hi tsxAttributeBraces guifg=#F99575
+" hi tsxEqual guifg=#F99575
+" hi tsxAttrib guifg=#F8BD7F cterm=italic
+
 "---Airline config---------------------------------------------------------
 let g:airline_powerline_fonts = 1
 let g:airline_theme='deus'
@@ -135,7 +160,13 @@ let g:airline_section_y=''
 
 let g:airline#extensions#tabline#enabled = 1	" enable buffer line
 let g:airline#extensions#tabline#formatter = 'unique_tail'	" style for buffer tab name
+
 let g:airline#extensions#ale#enabled = 1	" enable ale error
+let g:airline#extensions#ale#error_symbol = 'Err: ' 
+let g:airline#extensions#ale#warning_symbol = 'Warn: '
+let g:airline#extensions#ale#checking_symbol = 'Checking'
+let g:airline#extensions#ale#open_lnum_symbol = ' (Line '
+let g:airline#extensions#ale#close_lnum_symbol = ')'
 
 "---Nerdtree config-------------------------------------------------------
 " always open on vim start
@@ -145,4 +176,13 @@ map <C-\> :NERDTreeToggle %<CR>
 
 "---Default fzf layout---------------------------------------------------
 " - down / up / left / right
-let g:fzf_layout = { 'down': '~40%' }
+let g:fzf_layout = { 'down': '~50%' }
+" let g:fzf_layout = { 'window': '-tabnew' }
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit'}
+
+"---Indent Line config-----------------------------------------------------
+let g:indentLine_char = 'c' " Allow ASCII char
+let g:indentLine_char_list = ['┊']
