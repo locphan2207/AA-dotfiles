@@ -21,10 +21,14 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'scrooloose/nerdtree'
 
 " Syntax plugins
-Plugin 'mxw/vim-jsx'
+" Plugin 'mxw/vim-jsx'
 Plugin 'pangloss/vim-javascript'
-Plugin 'peitalin/vim-jsx-typescript'
 Plugin 'leafgarland/typescript-vim'
+" Plugin 'peitalin/vim-jsx-typescript'
+Plugin 'maxmellon/vim-jsx-pretty'
+
+" TypeScript
+Plugin 'Quramy/tsuquyomi'
 
 " Indent Line
 Plugin 'Yggdroot/indentLine'
@@ -59,7 +63,8 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-airline/vim-airline'
 
 " Colorscheme
-Plugin 'chriskempson/base16-vim'
+" Plugin 'chriskempson/base16-vim'
+Plugin 'saj/base16-vim'
 
 "---EndPlugins----------------------------------------------------------------
 " All of your Plugins must be added before the following line
@@ -90,8 +95,12 @@ inoremap jj <ESC>
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
 
+" Disable sound
+set visualbell 
+set t_vb=
+
 " Syntax
-syntax enable
+syntax on
 
 " Auto read/change from disk (when change from git also)
 set autoread
@@ -118,7 +127,7 @@ let g:ale_fixers = {
       \'typescript': ['eslint','prettier'],
       \'python': ['yapf']
       \}
-let g:ale_linters = {'javascript': ['eslint'], 'typescript': ['tsserver']}
+let g:ale_linters = {'javascript': ['eslint'], 'typescript': ['tsserver'], 'python': ['flake8', 'pylint']}
 let g:ale_fix_on_save = 1
 let g:ale_lint_on_enter = 1
 let g:ale_echo_msg_format = '[%linter%] %s'
@@ -136,21 +145,10 @@ let g:mta_filetypes = {
 			\ 'javascript.jxs' : 1,
 			\}
 
+" set filetypes as typescript.tsx
+" autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
+
 "---TSX config-------------------------------------------------------------
-" hi ReactState guifg=#C176A7
-" hi ReactProps guifg=#D19A66
-" hi Events ctermfg=204 guifg=#56B6C2
-" hi ReduxKeywords ctermfg=204 guifg=#C678DD
-" hi WebBrowser ctermfg=204 guifg=#56B6C2
-" hi ReactLifeCycleMethods ctermfg=204 guifg=#D19A66
-hi tsxTypeBraces guifg=#56B6C2
-" hi tsxtypes guifg=#e06c75
-hi tsxTagName guifg=#E06C75
-" hi tsxCloseString guifg=#F99575
-hi tsxCloseTag guifg=#F99575
-" hi tsxAttributeBraces guifg=#F99575
-" hi tsxEqual guifg=#F99575
-" hi tsxAttrib guifg=#F8BD7F cterm=italic
 
 "---Airline config---------------------------------------------------------
 let g:airline_powerline_fonts = 1
