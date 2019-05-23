@@ -166,7 +166,8 @@ let g:airline#extensions#ale#checking_symbol = 'Checking'
 let g:airline#extensions#ale#open_lnum_symbol = ' (Line '
 let g:airline#extensions#ale#close_lnum_symbol = ')'
 highlight ALEErrorSign ctermbg=NONE ctermfg=red
-highlight ALEError ctermbg=Black ctermfg=red cterm=underline
+highlight ALEError ctermbg=DarkGray ctermfg=red
+" highlight ALEError ctermbg=Black ctermfg=red cterm=underline
 
 "---Nerdtree config-------------------------------------------------------
 " always open on vim start
