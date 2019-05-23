@@ -125,9 +125,9 @@ set hlsearch
 let g:ale_fixers = {
       \'javascript': ['eslint', 'prettier'], 
       \'typescript': ['eslint','prettier'],
-      \'python': ['yapf']
+      \'python': ['black']
       \}
-let g:ale_linters = {'javascript': ['eslint'], 'typescript': ['tsserver'], 'python': ['flake8', 'pylint']}
+let g:ale_linters = {'javascript': ['eslint'], 'typescript': ['tsserver'], 'python': []}
 let g:ale_fix_on_save = 1
 let g:ale_lint_on_enter = 1
 let g:ale_echo_msg_format = '[%linter%] %s'
@@ -165,6 +165,8 @@ let g:airline#extensions#ale#warning_symbol = 'Warn: '
 let g:airline#extensions#ale#checking_symbol = 'Checking'
 let g:airline#extensions#ale#open_lnum_symbol = ' (Line '
 let g:airline#extensions#ale#close_lnum_symbol = ')'
+highlight ALEErrorSign ctermbg=NONE ctermfg=red
+highlight ALEError ctermbg=Black ctermfg=red cterm=underline
 
 "---Nerdtree config-------------------------------------------------------
 " always open on vim start
