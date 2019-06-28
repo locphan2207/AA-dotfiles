@@ -123,11 +123,11 @@ set hlsearch
 
 "---Ale config for react---------------------------------------------------
 let g:ale_fixers = {
-      \'javascript': ['eslint', 'prettier'], 
-      \'typescript': ['eslint','prettier'],
+      \'javascript': ['eslint'], 
+      \'typescript': ['eslint'],
       \'python': ['black']
       \}
-let g:ale_linters = {'javascript': ['eslint'], 'typescript': ['tsserver'], 'python': []}
+let g:ale_linters = {'javascript': [], 'typescript': ['eslint', 'tsserver'], 'python': []}
 let g:ale_fix_on_save = 1
 let g:ale_lint_on_enter = 1
 let g:ale_echo_msg_format = '[%linter%] %s'
