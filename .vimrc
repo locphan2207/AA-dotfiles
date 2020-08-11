@@ -21,23 +21,21 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'scrooloose/nerdtree'
 
 " Syntax plugins
-" Plugin 'mxw/vim-jsx'
 Plugin 'pangloss/vim-javascript'
-Plugin 'leafgarland/typescript-vim'
-" Plugin 'peitalin/vim-jsx-typescript'
 Plugin 'maxmellon/vim-jsx-pretty'
+Plugin 'leafgarland/typescript-vim'
 
 " TypeScript
 Plugin 'Quramy/tsuquyomi'
 
-" Indent Line
-Plugin 'Yggdroot/indentLine'
+" Indent Line (not working on mac)
+" Plugin 'Yggdroot/indentLine'
 
 " Eslint plugin
-Plugin 'w0rp/ale'
+" Plugin 'w0rp/ale'
 
 " tag match display
-Plugin 'Valloric/MatchTagAlways'
+" Plugin 'Valloric/MatchTagAlways'
 
 " Color preview
 Plugin 'ap/vim-css-color'
@@ -76,7 +74,7 @@ filetype plugin indent on    " required
 "===NormalConfig=============================================================
 " Auto update vim colorscheme base on the terminal color(must both use base16)
 " Make sure to install base 16 shell for this by adding:
-" To change colorscheme: type base 16 colorscheme name in terminal.
+" To change colorscheme: type base16_ then hit tab to choose name in terminal.
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
@@ -118,16 +116,19 @@ set splitright
 set incsearch
 set hlsearch
 
+" Clipboard copy
+set clipboard=unnamed
+
 " Set 256 colors
 " let &t_Co=256
 
 "---Ale config for react---------------------------------------------------
 let g:ale_fixers = {
-      \'javascript': ['eslint'], 
-      \'typescript': ['eslint'],
+      \'javascript': ['prettier'],
+      \'typescript': ['prettier'],
       \'python': ['black']
       \}
-let g:ale_linters = {'javascript': [], 'typescript': ['eslint', 'tsserver'], 'python': []}
+let g:ale_linters = {'javascript': ['eslint'], 'typescript': ['eslint'], 'python': []}
 let g:ale_fix_on_save = 1
 let g:ale_lint_on_enter = 1
 let g:ale_echo_msg_format = '[%linter%] %s'
@@ -138,7 +139,7 @@ nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 "---TypeScript syntax config------------------------------------------------
-let g:typescript_indent_disable = 1   " Disable auto indent
+let g:typescript_indent_disable = 0   " Disable auto indent
 
 " Allow MatchTagAlways to highlight jxs
 let g:mta_filetypes = {
@@ -160,11 +161,11 @@ let g:airline#extensions#tabline#enabled = 1	" enable buffer line
 let g:airline#extensions#tabline#formatter = 'unique_tail'	" style for buffer tab name
 
 let g:airline#extensions#ale#enabled = 1	" enable ale error
-let g:airline#extensions#ale#error_symbol = 'Err: ' 
-let g:airline#extensions#ale#warning_symbol = 'Warn: '
-let g:airline#extensions#ale#checking_symbol = 'Checking'
-let g:airline#extensions#ale#open_lnum_symbol = ' (Line '
-let g:airline#extensions#ale#close_lnum_symbol = ')'
+" let g:airline#extensions#ale#error_symbol = 'Err: ' 
+" let g:airline#extensions#ale#warning_symbol = 'Warn: '
+" let g:airline#extensions#ale#checking_symbol = 'Checking'
+" let g:airline#extensions#ale#open_lnum_symbol = ' (Line '
+" let g:airline#extensions#ale#close_lnum_symbol = ')'
 highlight ALEErrorSign ctermbg=NONE ctermfg=red
 highlight ALEError ctermbg=DarkGray ctermfg=red
 " highlight ALEError ctermbg=Black ctermfg=red cterm=underline
@@ -177,13 +178,18 @@ map <C-\> :NERDTreeToggle %<CR>
 
 "---Default fzf layout---------------------------------------------------
 " - down / up / left / right
-let g:fzf_layout = { 'down': '~50%' }
+" let g:fzf_layout = { 'down': '~50%' }
 " let g:fzf_layout = { 'window': '-tabnew' }
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit'}
+" let g:fzf_action = {
+"   \ 'ctrl-t': 'tab split',
+"   \ 'ctrl-x': 'split',
+"   \ 'ctrl-v': 'vsplit'}
 
 "---Indent Line config-----------------------------------------------------
+let g:indentLine_color_gui = '#4c4c4b'
 let g:indentLine_char = 'c' " Allow ASCII char
 let g:indentLine_char_list = ['┊']
+
+"---Vim jsx-----------------------------------------------------------------
+let g:vim_jsx_pretty_colorful_config = 1
+let g:vim_jsx_pretty_highlight_close_tag = 1
